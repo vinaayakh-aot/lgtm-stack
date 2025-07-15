@@ -60,7 +60,7 @@ setup-repos: check-prereqs
 
 install-local: setup-repos ## Install LGTM stack for local development
 	@echo "$(BLUE)Installing LGTM stack locally...$(RESET)"
-	helm install prometheus-operator --version 66.3.1 -n monitoring \
+	helm install prometheus-operator --version 75.9.0 -n monitoring \
 		prometheus-community/kube-prometheus-stack -f helm/values-prometheus.yaml >/dev/null 
 	helm install lgtm --version 2.1.0 -n monitoring \
 		grafana/lgtm-distributed -f helm/values-lgtm.local.yaml >/dev/null 
@@ -96,7 +96,7 @@ install-gcp: setup-repos check-gcp ## Install LGTM stack in GCP
 	@gcloud iam service-accounts keys create key.json \
 		--iam-account lgtm-monitoring@$(PROJECT_ID).iam.gserviceaccount.com
 	kubectl create secret generic lgtm-sa --from-file=key.json -n monitoring
-	helm install prometheus-operator --version 66.3.1 -n monitoring \
+	helm install prometheus-operator --version 75.9.0 -n monitoring \
 		prometheus-community/kube-prometheus-stack -f helm/values-prometheus.yaml >/dev/null 
 	helm install lgtm --version 2.1.0 -n monitoring \
 		grafana/lgtm-distributed -f helm/values-lgtm.gcp.yaml >/dev/null 

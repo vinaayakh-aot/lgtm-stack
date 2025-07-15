@@ -6,9 +6,10 @@ prometheus:
   prometheusSpec:
     scrapeInterval: "60s"
     remoteWrite:
-    - url:  http://lgtm-mimir-nginx:80/api/v1/push
+      - url: "http://lgtm-mimir-nginx:80/api/v1/push"
     externalLabels:
        environment: mimir
+    maximumStartupDurationSeconds: 60
   monitor:
     enabled: true
     interval: ""

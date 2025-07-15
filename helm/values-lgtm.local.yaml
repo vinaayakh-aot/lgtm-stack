@@ -104,6 +104,9 @@ mimir:
     replicas: 2
     zoneAwareReplication:
       enabled: false
+      migration:
+        enabled: false
+        replicas: null
     resources:
       requests:
         cpu: 20m
